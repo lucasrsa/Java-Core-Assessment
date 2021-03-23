@@ -4,7 +4,7 @@ import java.util.*;
 
 public class App {
 
-    static private final Set<Product> productList = new HashSet<>();
+    static private final List<Product> productList = new ArrayList<>();
 
     private static void save(Scanner sc) {
         System.out.print("Product name: ");
