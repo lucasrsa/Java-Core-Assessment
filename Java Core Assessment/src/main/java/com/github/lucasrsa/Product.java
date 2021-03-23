@@ -47,6 +47,12 @@ public class Product {
         this.name = name;
     }
 
+    public String describe() {
+        return "Product: " + this.name + "\n\tPrice: $ " + String.format("%.2f", this.price)
+                + "\n\tDescription: " + this.description + "\n\tQuantity: "
+                + this.quantity + "\n\tCategory: " + this.category;
+    }
+
     @Override
     public String toString() {
         return this.name;
@@ -59,17 +65,12 @@ public class Product {
 
         Product product = (Product) o;
 
-        return name.equalsIgnoreCase(product.name);
+        return this.name.equalsIgnoreCase(product.name);
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return this.name.hashCode();
     }
 
-    public String describe() {
-        return "Product: " + this + "\n\tPrice: $ " + this.price
-                + "\n\tDescription: " + this.description + "\n\tQuantity: "
-                + this.quantity + "\n\tCategory: " + this.category;
-    }
 }

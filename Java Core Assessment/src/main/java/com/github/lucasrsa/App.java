@@ -9,8 +9,8 @@ public class App {
     private static void save(Scanner sc) {
         System.out.print("Product name: ");
         Product product = new Product(sc.next());
-        if (productList.contains(product)){
-            System.out.println("Product "+product+" already exists!");
+        if (productList.contains(product)) {
+            System.out.println("Product " + product.getName() + " already exists!");
             return; // If a product with the same name already exists, return to main menu
         }
         while (true) {
@@ -38,15 +38,13 @@ public class App {
         System.out.print("Product category: ");
         product.setCategory(sc.next());
         productList.add(product);
-        System.out.println("Product added successfully.");
+        System.out.println("Product " + product.getName() + " added successfully.");
     }
 
     private static String search(String name) {
         for (Product product : productList) {
-            if (product.toString().equalsIgnoreCase(name)) {
-                return "Product: " + product.getName() + "\n\tPrice: $ " + String.format("%.2f", product.getPrice())
-                        + "\n\tDescription: " + product.getDescription() + "\n\tQuantity: "
-                        + product.getQuantity() + "\n\tCategory: " + product.getCategory();
+            if (product.getName().equalsIgnoreCase(name)) {
+                return product.describe();
             }
         }
         return "Product not found!";
@@ -61,26 +59,32 @@ public class App {
                 System.out.println("\t" + val + " to " + val.describe());
             }
             System.out.print("-> ");
-            opt = Options.valueOf(sc.next().toUpperCase());
-            switch (opt) {
-                case SAVE:
-                    save(sc);
-                    break;
-                case LIST:
-                    System.out.println("Products: " + productList);
-                    break;
-                case SEARCH:
-                    System.out.print("Please insert product name: ");
-                    final String str = sc.next();
-                    System.out.println(search(str));
-                    break;
-                case EXIT:
-                    System.out.println("Exiting application...");
-                    break;
-                default:
-                    break;
+            try {
+                opt = Options.valueOf(sc.next().toUpperCase());
+                switch (opt) {
+                    case SAVE:
+                        save(sc);
+                        break;
+                    case LIST:
+                        System.out.println("Products: " + productList);
+                        break;
+                    case SEARCH:
+                        System.out.print("Please insert product name: ");
+                        final String str = sc.next();
+                        System.out.println(search(str));
+                        break;
+                    case EXIT:
+                        System.out.println("Exiting application...");
+                        break;
+                    default:
+                        break;
+                }
+            }catch (IllegalArgumentException e){
+                System.out.println("Please input valid option.");
+                opt = Options.LIST; // Assign placeholder Option to avoid exit
+            }finally {
+                System.out.println(); // Add new line for better visibility
             }
-            System.out.println();
         } while (!opt.equals(Options.EXIT));
     }
 }
