@@ -80,8 +80,7 @@ public class App {
                 default:
                     break;
             }
-            System.out.print("Press Enter to continue.");
-            sc.next();
+            System.out.println();
         } while (!opt.equals(Options.EXIT));
     }
 }
