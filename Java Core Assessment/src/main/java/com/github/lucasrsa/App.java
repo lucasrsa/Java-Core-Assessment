@@ -8,7 +8,7 @@ public class App {
 
     private static void save(Scanner sc) {
         System.out.print("Product name: ");
-        Product product = new Product(sc.next());
+        final Product product = new Product(sc.next());
         if (productList.contains(product)) {
             System.out.println("Product " + product.getName() + " already exists!");
             return; // If a product with the same name already exists, return to main menu
