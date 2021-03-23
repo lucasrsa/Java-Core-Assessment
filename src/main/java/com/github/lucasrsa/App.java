@@ -7,12 +7,14 @@ public class App {
     static private final List<Product> productList = new ArrayList<>();
 
     private static void save(Scanner sc) {
+
         System.out.print("Product name: ");
         final Product product = new Product(sc.next());
         if (productList.contains(product)) {
             System.out.println("Product " + product.getName() + " already exists!");
             return; // If a product with the same name already exists, return to main menu
         }
+
         while (true) {
             try {
                 System.out.print("Product price: ");
@@ -23,8 +25,10 @@ public class App {
                 sc.next(); // Remove invalid input
             }
         }
+
         System.out.print("Product description: ");
         product.setDescription(sc.next());
+
         while (true) {
             try {
                 System.out.print("Product quantity: ");
@@ -35,8 +39,10 @@ public class App {
                 sc.next(); // Remove invalid input
             }
         }
+
         System.out.print("Product category: ");
         product.setCategory(sc.next());
+
         productList.add(product);
         System.out.println("Product " + product.getName() + " added successfully.");
     }
@@ -59,6 +65,7 @@ public class App {
                 System.out.println("\t" + val + " to " + val.describe());
             }
             System.out.print("-> ");
+
             try {
                 opt = Options.valueOf(sc.next().toUpperCase());
                 switch (opt) {
