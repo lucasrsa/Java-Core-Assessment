@@ -2,10 +2,10 @@ package com.github.lucasrsa;
 
 public class Product {
     private final String name;
-    private double price;
-    private String description;
-    private int quantity;
-    private String category;
+    private double price = 0.0;
+    private String description = "";
+    private int quantity = 0;
+    private String category = "";
 
     public String getName() {
         return name;
@@ -61,7 +61,7 @@ public class Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
 
         Product product = (Product) o;
 
