@@ -67,26 +67,23 @@ public class ProductTest {
 
     @Test
     public void testDescribe() {
-//        final String str =  "Product: " + this.product.getName() + "\n\tPrice: $ "
-//                + String.format("%.2f", this.product.getPrice()) + "\n\tDescription: "
-//                + this.product.getDescription() + "\n\tQuantity: " + this.product.getQuantity()
-//                + "\n\tCategory: " + this.product.getCategory();
-//        assertEquals(str,this.product.describe());
+        final String str =  "Product: Test\n\tPrice: $ 0.00\n\tDescription: \n\tQuantity: 0\n\tCategory: ";
+        assertEquals(str,this.product.describe());
     }
 
     @Test
     public void testToString() {
-//        assertEquals(this.product.getName(),this.product.toString());
+        assertEquals("Test",this.product.toString());
     }
 
     @Test
     public void testEquals() {
-//        assertEquals(this.product, this.product);
+        assertEquals(new Product("Test"), this.product);
     }
 
     @Test
     public void testHashCode() {
-//        assertEquals(this.product.getName().hashCode(),this.product.hashCode());
+        assertEquals(new Product("Test").hashCode(),this.product.hashCode());
     }
 
     @After
