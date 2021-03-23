@@ -11,7 +11,7 @@ public class AppTest {
     InputStream stdin;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         stdin = System.in;
     }
 
@@ -31,7 +31,7 @@ public class AppTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         System.setIn(stdin);
     }
 
