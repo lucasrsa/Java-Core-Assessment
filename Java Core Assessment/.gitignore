@@ -3,7 +3,7 @@
 /.idea/workspace.xml
 
 # idea files
-.idea
+/.idea/
 
 # Compiled files
-target
+/target/
