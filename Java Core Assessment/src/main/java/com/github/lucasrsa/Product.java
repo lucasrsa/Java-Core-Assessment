@@ -43,11 +43,33 @@ public class Product {
         this.category = category;
     }
 
-    public Product(String name, double price, String description, int quantity, String category) throws IncorrectFieldFormatException {
+    public Product(String name) {
         this.name = name;
-        this.price = price;
-        this.description = description;
-        this.quantity = quantity;
-        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        return name.equalsIgnoreCase(product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    public String describe() {
+        return "Product: " + this + "\n\tPrice: $ " + this.price
+                + "\n\tDescription: " + this.description + "\n\tQuantity: "
+                + this.quantity + "\n\tCategory: " + this.category;
     }
 }
