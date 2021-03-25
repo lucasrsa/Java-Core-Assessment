@@ -58,16 +58,16 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in).useLocale(Locale.getDefault());
-        Options opt;
+        ProductOptions opt;
         do {
             System.out.println("Choose your option:");
-            for (Options val : Options.values()) {
+            for (ProductOptions val : ProductOptions.values()) {
                 System.out.println("\t" + val + " to " + val.describe());
             }
             System.out.print("-> ");
 
             try {
-                opt = Options.valueOf(sc.next().toUpperCase());
+                opt = ProductOptions.valueOf(sc.next().toUpperCase());
                 switch (opt) {
                     case SAVE:
                         save(sc);
@@ -88,10 +88,10 @@ public class App {
                 }
             }catch (IllegalArgumentException e){
                 System.out.println("Please input valid option.");
-                opt = Options.LIST; // Assign placeholder Option to avoid exit
+                opt = ProductOptions.LIST; // Assign placeholder Option to avoid exit
             }finally {
                 System.out.println(); // Add new line for better visibility
             }
-        } while (!opt.equals(Options.EXIT));
+        } while (!opt.equals(ProductOptions.EXIT));
     }
 }

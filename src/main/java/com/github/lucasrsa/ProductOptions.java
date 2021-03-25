@@ -1,6 +1,6 @@
 package com.github.lucasrsa;
 
-public enum Options {
+public enum ProductOptions {
     SAVE, LIST, SEARCH, EXIT;
 
     public String describe(){
