@@ -1,76 +1,60 @@
 package com.github.lucasrsa;
 
-public class Product {
-    private final String name;
-    private double price = 0.0;
-    private String description = "";
-    private int quantity = 0;
-    private String category = "";
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-    public String getName() {
-        return name;
-    }
+public class Product extends Describable {
+    private double price = 0.0;
+    private int quantity = 0;
 
     public double getPrice() {
         return price;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public Product(String name) {
-        this.name = name;
-    }
-
     public String describe() {
         return "Product: " + this.name + "\n\tPrice: $ " + String.format("%.2f", this.price)
                 + "\n\tDescription: " + this.description + "\n\tQuantity: "
-                + this.quantity + "\n\tCategory: " + this.category;
+                + this.quantity;
     }
 
-    @Override
-    public String toString() {
-        return this.name;
+    public Product(String name, Scanner sc) {
+        super(name);
+
+        while (true) {
+            try {
+                System.out.print("Product price: ");
+                this.setPrice(sc.nextDouble());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Please input a valid price.");
+                sc.next(); // Remove invalid input
+            }
+        }
+
+        System.out.print("Product description: ");
+        this.setDescription(sc.next());
+
+        while (true) {
+            try {
+                System.out.print("Product quantity: ");
+                this.setQuantity(sc.nextInt());
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Please input a valid quantity.");
+                sc.next(); // Remove invalid input
+            }
+        }
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
-        return this.name.equalsIgnoreCase(product.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.name.hashCode();
-    }
-
 }
