@@ -20,11 +20,7 @@ public class App {
         ProductOptions opt;
 
         do {
-            System.out.println("Choose your option:");
-            for (ProductOptions val : ProductOptions.values()) {
-                System.out.println("\t" + val + " to " + val.describe());
-            }
-            System.out.print("-> ");
+            ProductOptions.describeOptions();
             opt = ProductOptions.valueOf(sc.next().toUpperCase());
             try {
                 switch (opt) {
@@ -71,11 +67,7 @@ public class App {
         MainOptions opt;
 
         do {
-            System.out.println("Choose your option:");
-            for (MainOptions val : MainOptions.values()) {
-                System.out.println("\t" + val + " to " + val.describe());
-            }
-            System.out.print("-> ");
+            MainOptions.describeOptions();
             try {
                 opt = MainOptions.valueOf(sc.next().toUpperCase());
                 switch (opt) {

@@ -3,7 +3,7 @@ package com.github.lucasrsa;
 public enum ProductOptions {
     SAVE, LIST, SEARCH, RETURN;
 
-    public String describe(){
+    private String describe(){
         switch (this){
             case SAVE:
                 return "save a new product.";
@@ -16,5 +16,13 @@ public enum ProductOptions {
             default:
                 return ".";
         }
+    }
+
+    public static void describeOptions(){
+        System.out.println("Choose your option:");
+        for (ProductOptions val : ProductOptions.values()) {
+            System.out.println("\t" + val + " to " + val.describe());
+        }
+        System.out.print("-> ");
     }
 }

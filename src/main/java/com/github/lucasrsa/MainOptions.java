@@ -3,7 +3,7 @@ package com.github.lucasrsa;
 public enum MainOptions {
     PRODUCT, COLLECTION, EXIT;
 
-    public String describe(){
+    private String describe(){
         switch (this){
             case PRODUCT:
                 return "manage products.";
@@ -14,5 +14,13 @@ public enum MainOptions {
             default:
                 return ".";
         }
+    }
+
+    public static void describeOptions(){
+        System.out.println("Choose your option:");
+        for (MainOptions val : MainOptions.values()) {
+            System.out.println("\t" + val + " to " + val.describe());
+        }
+        System.out.print("-> ");
     }
 }
