@@ -11,7 +11,7 @@ public class ProductOptionsTest {
         assertEquals("save a new product.", ProductOptions.SAVE.describe());
         assertEquals("list all products.", ProductOptions.LIST.describe());
         assertEquals("search for a product by name.", ProductOptions.SEARCH.describe());
-        assertEquals("exit the application.", ProductOptions.EXIT.describe());
+        assertEquals("exit the application.", ProductOptions.RETURN.describe());
     }
 
 }

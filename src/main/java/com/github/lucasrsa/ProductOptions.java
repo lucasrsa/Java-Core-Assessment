@@ -1,7 +1,7 @@
 package com.github.lucasrsa;
 
 public enum ProductOptions {
-    SAVE, LIST, SEARCH, EXIT;
+    SAVE, LIST, SEARCH, RETURN;
 
     public String describe(){
         switch (this){
@@ -11,8 +11,8 @@ public enum ProductOptions {
                 return "list all products.";
             case SEARCH:
                 return "search for a product by name.";
-            case EXIT:
-                return "exit the application.";
+            case RETURN:
+                return "return to main menu.";
             default:
                 return ".";
         }
