@@ -5,6 +5,7 @@ import java.util.*;
 public class App {
 
     static private final List<Product> productList = new ArrayList<>();
+    static private final List<MainCollection> collectionList = new ArrayList<>();
 
     private static String searchProduct(String name) {
         for (Product product : productList) {
@@ -27,7 +28,6 @@ public class App {
                     case SAVE:
                         System.out.print("Product name: ");
                         final String name = sc.next();
-                        // Product method .equals is implemented to also receive String
                         Product product = new Product(name);
                         if (productList.contains(product)) {
                             System.out.println("Product " + name + " already exists!");
@@ -70,6 +70,16 @@ public class App {
             try {
                 switch (opt) {
                     case NEW:
+                        System.out.print("Collection name: ");
+                        final String name = sc.next();
+                        MainCollection collection = new MainCollection(name);
+                        if (collectionList.contains(collection)) {
+                            System.out.println("Collection " + name + " already exists!");
+                            return; // If a collection with the same name already exists, return to main menu
+                        }
+                        collection.setData(sc);
+                        collectionList.add(collection);
+                        System.out.println("Collection " + name + " added successfully.");
                         break;
                     case SUB:
                         break;
