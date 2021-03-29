@@ -61,7 +61,37 @@ public class App {
     }
 
     public static void collectionMenu(Scanner sc){
-        System.out.println("collection");
+
+        CollectionOptions opt;
+
+        do {
+            CollectionOptions.describeOptions();
+            opt = CollectionOptions.valueOf(sc.next().toUpperCase());
+            try {
+                switch (opt) {
+                    case NEW:
+                        break;
+                    case SUB:
+                        break;
+                    case LIST:
+                        break;
+                    case SEARCH:
+                        break;
+                    case PRODUCTS:
+                        break;
+                    case RETURN:
+                        break;
+                    default:
+                        throw new IllegalArgumentException("No option match");
+                }
+                opt = CollectionOptions.RETURN; // If no exception was thrown, return to main menu
+            }catch (IllegalArgumentException e){
+                System.out.println("Please input valid option.");
+                opt = CollectionOptions.LIST; // Attribute random value to avoid returning to main menu
+            }finally {
+                System.out.println(); // Add new line for better visibility
+            }
+        } while (!opt.equals(CollectionOptions.RETURN));
     }
 
     public static void main(String[] args) {
