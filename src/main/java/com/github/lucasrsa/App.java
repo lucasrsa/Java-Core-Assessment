@@ -22,12 +22,12 @@ public class App {
 
         do {
             ProductOptions.describeOptions();
-            opt = ProductOptions.valueOf(sc.next().toUpperCase());
+            opt = ProductOptions.valueOf(sc.nextLine().toUpperCase());
             try {
                 switch (opt) {
                     case SAVE:
                         System.out.print("Product name: ");
-                        final String name = sc.next();
+                        final String name = sc.nextLine();
                         Product product = new Product(name);
                         if (productList.contains(product)) {
                             System.out.println("Product " + name + " already exists!");
@@ -42,7 +42,7 @@ public class App {
                         break;
                     case SEARCH:
                         System.out.print("Please insert product name: ");
-                        final String str = sc.next();
+                        final String str = sc.nextLine();
                         System.out.println(searchProduct(str));
                         break;
                     case RETURN:
@@ -66,12 +66,12 @@ public class App {
 
         do {
             CollectionOptions.describeOptions();
-            opt = CollectionOptions.valueOf(sc.next().toUpperCase());
+            opt = CollectionOptions.valueOf(sc.nextLine().toUpperCase());
             try {
                 switch (opt) {
                     case NEW:
                         System.out.print("Collection name: ");
-                        final String name = sc.next();
+                        final String name = sc.nextLine();
                         MainCollection collection = new MainCollection(name);
                         if (collectionList.contains(collection)) {
                             System.out.println("Collection " + name + " already exists!");
@@ -84,6 +84,9 @@ public class App {
                     case SUB:
                         break;
                     case LIST:
+                        for (MainCollection mainC:collectionList) {
+                            System.out.println(mainC);
+                        }
                         break;
                     case SEARCH:
                         break;
@@ -111,7 +114,7 @@ public class App {
         do {
             MainOptions.describeOptions();
             try {
-                opt = MainOptions.valueOf(sc.next().toUpperCase());
+                opt = MainOptions.valueOf(sc.nextLine().toUpperCase());
                 switch (opt) {
                     case PRODUCT:
                         productMenu(sc);

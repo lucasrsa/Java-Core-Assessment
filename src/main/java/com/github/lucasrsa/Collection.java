@@ -10,7 +10,7 @@ public abstract class Collection extends Describable {
         String str;
         for (int i = 0; i < this.keywords.length; i++) {
             System.out.printf("Add keyword %d/%d (Leave empty to continue): ", i+1, this.keywords.length);
-            str = sc.next();
+            str = sc.nextLine();
             if (str.isEmpty()){
                 break;
             }

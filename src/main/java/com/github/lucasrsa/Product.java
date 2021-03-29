@@ -36,12 +36,12 @@ public class Product extends Describable {
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Please input a valid price.");
-                sc.next(); // Remove invalid input
+                sc.nextLine(); // Remove invalid input
             }
         }
 
         System.out.print("Product description: ");
-        this.setDescription(sc.next());
+        this.setDescription(sc.nextLine());
 
         while (true) {
             try {
@@ -50,7 +50,7 @@ public class Product extends Describable {
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Please input a valid quantity.");
-                sc.next(); // Remove invalid input
+                sc.nextLine(); // Remove invalid input
             }
         }
     }

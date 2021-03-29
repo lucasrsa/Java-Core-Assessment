@@ -18,9 +18,14 @@ public class SubCollection extends Collection {
 
     public void setData(Scanner sc) {
         System.out.print("Sub-collection description: ");
-        this.setDescription(sc.next());
+        this.setDescription(sc.nextLine());
 
         this.setKeywords(sc);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 
     public SubCollection(String name) {

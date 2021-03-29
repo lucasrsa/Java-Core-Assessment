@@ -27,7 +27,7 @@ public abstract class Describable {
         if (o == null) return false;
         String objName;
         if (this.getClass() == o.getClass()){
-            objName = ((Product) o).getName();
+            objName = ((Describable) o).getName();
         }else {
             return false;
         }

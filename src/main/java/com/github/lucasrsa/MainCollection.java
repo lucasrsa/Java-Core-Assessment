@@ -18,9 +18,20 @@ public class MainCollection extends Collection {
 
     public void setData(Scanner sc) {
         System.out.print("Collection description: ");
-        this.setDescription(sc.next());
+        this.setDescription(sc.nextLine());
 
         this.setKeywords(sc);
+    }
+
+    @Override
+    public String toString() {
+        String aux;
+        StringBuilder str = new StringBuilder("Collection " + this.name + ":");
+        for (SubCollection sub : subCollectionList) {
+            aux = "\n\t" + sub;
+            str.append(aux);
+        }
+        return str.toString();
     }
 
     public MainCollection(String name) {
