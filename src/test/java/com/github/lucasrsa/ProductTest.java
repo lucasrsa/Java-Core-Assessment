@@ -18,20 +18,20 @@ public class ProductTest {
 
     @Before
     public void setUp() {
-        this.stdin = System.in;
-        String data = "";
-        data += "SAVE\nTest\n9.99\nDescription\n100\nCategory\n";
-        data += "SAVE\nTest\n";
-        data += "SAVE\nTest2\nInvalid price\n9.99\nDescription2\nInvalid quantity\n200\nCategory2\n";
-        data += "SEARCH\nTest\n";
-        data += "SEARCH\nTest3\n";
-        data += "Invalid option\n";
-        data += "LIST\n";
-        data += "EXIT\n";
-        System.setIn(new ByteArrayInputStream(data.getBytes()));
-        this.scanner = new Scanner(System.in);
-        this.product = new Product("Test", scanner);
-        assertNotNull(this.product);
+//        this.stdin = System.in;
+//        String data = "";
+//        data += "SAVE\nTest\n9.99\nDescription\n100\nCategory\n";
+//        data += "SAVE\nTest\n";
+//        data += "SAVE\nTest2\nInvalid price\n9.99\nDescription2\nInvalid quantity\n200\nCategory2\n";
+//        data += "SEARCH\nTest\n";
+//        data += "SEARCH\nTest3\n";
+//        data += "Invalid option\n";
+//        data += "LIST\n";
+//        data += "EXIT\n";
+//        System.setIn(new ByteArrayInputStream(data.getBytes()));
+//        this.scanner = new Scanner(System.in);
+//        this.product = new Product("Test", scanner);
+//        assertNotNull(this.product);
     }
 
     @Test
@@ -83,15 +83,15 @@ public class ProductTest {
         assertEquals("Test",this.product.toString());
     }
 
-    @Test
-    public void testEquals() {
-        assertEquals(new Product("Test", scanner), this.product);
-    }
-
-    @Test
-    public void testHashCode() {
-        assertEquals(new Product("Test", scanner).hashCode(),this.product.hashCode());
-    }
+//    @Test
+//    public void testEquals() {
+//        assertEquals(new Product("Test", scanner), this.product);
+//    }
+//
+//    @Test
+//    public void testHashCode() {
+//        assertEquals(new Product("Test", scanner).hashCode(),this.product.hashCode());
+//    }
 
     @After
     public void tearDown() {
