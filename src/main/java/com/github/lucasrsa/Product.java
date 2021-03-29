@@ -25,13 +25,10 @@ public class Product extends Describable {
 
     public String describe() {
         return "Product: " + this.name + "\n\tPrice: $ " + String.format("%.2f", this.price)
-                + "\n\tDescription: " + this.description + "\n\tQuantity: "
-                + this.quantity;
+                + "\n\tDescription: " + this.description;
     }
 
-    public Product(String name, Scanner sc) {
-        super(name);
-
+    public void setData(Scanner sc) {
         while (true) {
             try {
                 System.out.print("Product price: ");
@@ -56,5 +53,9 @@ public class Product extends Describable {
                 sc.next(); // Remove invalid input
             }
         }
+    }
+
+    public Product(String name) {
+        super(name);
     }
 }

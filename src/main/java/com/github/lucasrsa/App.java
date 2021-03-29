@@ -28,11 +28,13 @@ public class App {
                         System.out.print("Product name: ");
                         final String name = sc.next();
                         // Product method .equals is implemented to also receive String
-                        if (productList.contains(name)) {
+                        Product product = new Product(name);
+                        if (productList.contains(product)) {
                             System.out.println("Product " + name + " already exists!");
                             return; // If a product with the same name already exists, return to main menu
                         }
-                        productList.add(new Product(name, sc));
+                        product.setData(sc);
+                        productList.add(product);
                         System.out.println("Product " + name + " added successfully.");
                         break;
                     case LIST:
