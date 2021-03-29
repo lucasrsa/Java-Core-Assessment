@@ -1,4 +1,6 @@
-package com.github.lucasrsa;
+package com.github.lucasrsa.collection;
+
+import com.github.lucasrsa.Describable;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.github.lucasrsa;
+package com.github.lucasrsa.options;
 
 public enum ProductOptions {
     SAVE, LIST, SEARCH, RETURN;

@@ -1,4 +1,4 @@
-package com.github.lucasrsa;
+package com.github.lucasrsa.collection;
 
 import java.util.ArrayList;
 import java.util.List;

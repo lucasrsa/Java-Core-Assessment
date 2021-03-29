@@ -1,4 +1,6 @@
-package com.github.lucasrsa;
+package com.github.lucasrsa.product;
+
+import com.github.lucasrsa.Describable;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

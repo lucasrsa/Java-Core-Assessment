@@ -1,5 +1,11 @@
 package com.github.lucasrsa;
 
+import com.github.lucasrsa.collection.MainCollection;
+import com.github.lucasrsa.options.CollectionOptions;
+import com.github.lucasrsa.options.MainOptions;
+import com.github.lucasrsa.options.ProductOptions;
+import com.github.lucasrsa.product.Product;
+
 import java.util.*;
 
 public class App {
