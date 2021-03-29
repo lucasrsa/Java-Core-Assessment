@@ -1,26 +1,31 @@
 package com.github.lucasrsa;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SubCollection extends Collection {
 
-    private Product[] productList;
+    private final List<Product> productList;
 
-    public void addProduct(Product product){
-
+    public void addProduct(Product product) {
+        this.productList.add(product);
     }
 
-    public void listProducts(){
-        System.out.println("Products: "+ Arrays.toString(this.productList));
+    public List<Product> getProductList() {
+        return this.productList;
     }
 
-    public SubCollection(String name, Scanner sc) {
-        super(name);
-
-        System.out.print("Product description: ");
+    public void setData(Scanner sc) {
+        System.out.print("Sub-collection description: ");
         this.setDescription(sc.next());
 
         this.setKeywords(sc);
+    }
+
+    public SubCollection(String name) {
+        super(name);
+
+        this.productList = new ArrayList<>();
     }
 }
