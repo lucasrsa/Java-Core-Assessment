@@ -29,25 +29,7 @@ public class App {
         String auxName = sc.nextLine();
         for (MainCollection col : collectionList) {
             if (col.toString().equalsIgnoreCase(auxName)) {
-                System.out.print("Choose a sub-collection to add product: ");
-                auxName = sc.nextLine();
-                for (SubCollection subCol : col.getSubCollectionList()) {
-                    if (subCol.toString().equalsIgnoreCase(auxName)) {
-                        System.out.print("Product name: ");
-                        auxName = sc.nextLine();
-                        Product product = new Product(auxName);
-                        if (subCol.getProductList().contains(product)) {
-                            System.out.println("Product " + auxName + " already exists in " +
-                                    "Collection " + col + "/" + subCol + "!");
-                            return; // If a product with the same name already exists, return to main menu
-                        }
-                        product.setData(sc);
-                        subCol.addProduct(product);
-                        System.out.println("Product " + auxName + " added successfully.");
-                        return;
-                    }
-                }
-                System.out.println("Sub-Collection " + auxName + " not found!");
+                col.newProduct(sc);
                 return;
             }
         }

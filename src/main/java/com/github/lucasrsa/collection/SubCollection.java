@@ -10,8 +10,18 @@ public class SubCollection extends Collection {
 
     private final List<Product> productList;
 
-    public void addProduct(Product product) {
+    public void newProduct(Scanner sc) {
+        System.out.print("Product name: ");
+        String auxName = sc.nextLine();
+        Product product = new Product(auxName);
+        if (this.productList.contains(product)) {
+            System.out.println("Product " + auxName + " already exists in " +
+                    "Collection " + this + "/" + this + "!");
+            return; // If a product with the same name already exists, return to main menu
+        }
+        product.setData(sc);
         this.productList.add(product);
+        System.out.println("Product " + auxName + " added successfully.");
     }
 
     public List<Product> getProductList() {

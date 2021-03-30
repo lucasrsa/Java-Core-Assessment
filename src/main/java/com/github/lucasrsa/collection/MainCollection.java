@@ -25,8 +25,16 @@ public class MainCollection extends Collection {
         System.out.println("Sub-collection " + auxName + " added successfully.");
     }
 
-    public List<SubCollection> getSubCollectionList() {
-        return this.subCollectionList;
+    public void newProduct(Scanner sc){
+        System.out.print("Choose a sub-collection to add product: ");
+        String auxName = sc.nextLine();
+        for (SubCollection subCol : this.subCollectionList) {
+            if (subCol.toString().equalsIgnoreCase(auxName)) {
+                subCol.newProduct(sc);
+                return;
+            }
+        }
+        System.out.println("Sub-Collection " + auxName + " not found!");
     }
 
     public List<Product> getProductList() {
