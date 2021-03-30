@@ -9,14 +9,6 @@ public class Product extends Describable {
     private double price = 0.0;
     private int quantity = 0;
 
-    public double getPrice() {
-        return price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }

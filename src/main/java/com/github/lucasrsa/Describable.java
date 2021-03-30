@@ -8,10 +8,6 @@ public abstract class Describable {
         return this.name;
     }
 
-    public String getDescription() {
-        return this.description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -32,11 +28,6 @@ public abstract class Describable {
             return false;
         }
         return this.name.equalsIgnoreCase(objName);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.name.hashCode();
     }
 
     public Describable(String name){
