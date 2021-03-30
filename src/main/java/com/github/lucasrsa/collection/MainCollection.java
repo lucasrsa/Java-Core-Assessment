@@ -23,8 +23,7 @@ public class MainCollection extends Collection {
         this.setKeywords(sc);
     }
 
-    @Override
-    public String toString() {
+    public String listAll() {
         String aux;
         StringBuilder str = new StringBuilder("Collection " + this.name + ":");
         for (SubCollection sub : subCollectionList) {
@@ -32,6 +31,11 @@ public class MainCollection extends Collection {
             str.append(aux);
         }
         return str.toString();
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 
     public MainCollection(String name) {

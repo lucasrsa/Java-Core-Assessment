@@ -68,6 +68,7 @@ public class App {
     public static void collectionMenu(Scanner sc) {
 
         CollectionOptions opt;
+        MainCollection collection;
 
         while (true) {
             CollectionOptions.describeOptions();
@@ -77,7 +78,7 @@ public class App {
                     case NEW:
                         System.out.print("Collection name: ");
                         final String name = sc.nextLine();
-                        MainCollection collection = new MainCollection(name);
+                        collection = new MainCollection(name);
                         if (collectionList.contains(collection)) {
                             System.out.println("Collection " + name + " already exists!");
                             return; // If a collection with the same name already exists, return to main menu
@@ -87,10 +88,12 @@ public class App {
                         System.out.println("Collection " + name + " added successfully.");
                         break;
                     case SUB:
+                        System.out.print("Choose a collection to add sub-collection: ");
+                        collection = new MainCollection(sc.nextLine());
                         break;
                     case LIST:
                         for (MainCollection mainC : collectionList) {
-                            System.out.println(mainC);
+                            System.out.println(mainC.listAll());
                         }
                         break;
                     case SEARCH:
