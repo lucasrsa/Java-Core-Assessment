@@ -115,7 +115,7 @@ public class App {
         Scanner sc = new Scanner(System.in).useLocale(Locale.getDefault());
         MainOptions opt;
 
-        do {
+        while (true) {
             MainOptions.describeOptions();
             try {
                 opt = MainOptions.valueOf(sc.nextLine().toUpperCase());
@@ -128,16 +128,15 @@ public class App {
                         break;
                     case EXIT:
                         System.out.println("Exiting application...");
-                        break;
+                        return;
                     default:
                         throw new IllegalArgumentException("No option match");
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Please input valid option.");
-                opt = MainOptions.PRODUCT; // Attribute random value to avoid exiting application
             } finally {
                 System.out.println(); // Add new line for better visibility
             }
-        } while (!opt.equals(MainOptions.EXIT));
+        }
     }
 }
