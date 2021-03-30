@@ -1,6 +1,7 @@
 package com.github.lucasrsa;
 
 import com.github.lucasrsa.collection.MainCollection;
+import com.github.lucasrsa.collection.SubCollection;
 import com.github.lucasrsa.options.CollectionOptions;
 import com.github.lucasrsa.options.MainOptions;
 import com.github.lucasrsa.options.ProductOptions;
@@ -42,21 +43,20 @@ public class App {
                         product.setData(sc);
                         productList.add(product);
                         System.out.println("Product " + name + " added successfully.");
-                        break;
+                        return;
                     case LIST:
                         System.out.println("Products: " + productList);
-                        break;
+                        return;
                     case SEARCH:
                         System.out.print("Please insert product name: ");
                         final String str = sc.nextLine();
                         System.out.println(searchProduct(str));
-                        break;
+                        return;
                     case RETURN:
                         return;
                     default:
                         throw new IllegalArgumentException("No option match");
                 }
-                return; // If no exception was thrown, return to main menu
             } catch (IllegalArgumentException e) {
                 System.out.println("Please input valid option.");
             } finally {
@@ -68,7 +68,8 @@ public class App {
     public static void collectionMenu(Scanner sc) {
 
         CollectionOptions opt;
-        MainCollection collection;
+        MainCollection auxCollection;
+        String auxName;
 
         while (true) {
             CollectionOptions.describeOptions();
@@ -77,38 +78,56 @@ public class App {
                 switch (opt) {
                     case NEW:
                         System.out.print("Collection name: ");
-                        final String name = sc.nextLine();
-                        collection = new MainCollection(name);
-                        if (collectionList.contains(collection)) {
-                            System.out.println("Collection " + name + " already exists!");
+                        auxName = sc.nextLine();
+                        auxCollection = new MainCollection(auxName);
+                        if (collectionList.contains(auxCollection)) {
+                            System.out.println("Collection " + auxName + " already exists!");
                             return; // If a collection with the same name already exists, return to main menu
                         }
-                        collection.setData(sc);
-                        collectionList.add(collection);
-                        System.out.println("Collection " + name + " added successfully.");
-                        break;
+                        auxCollection.setData(sc);
+                        collectionList.add(auxCollection);
+                        System.out.println("Collection " + auxName + " added successfully.");
+                        return;
                     case SUB:
                         System.out.print("Choose a collection to add sub-collection: ");
-                        collection = new MainCollection(sc.nextLine());
-                        break;
-                    case LIST:
-                        for (MainCollection mainC : collectionList) {
-                            System.out.println(mainC.listAll());
+                        auxName = sc.nextLine();
+                        for (MainCollection col : collectionList) {
+                            if (col.toString().equalsIgnoreCase(auxName)) {
+                                System.out.print("Sub-Collection name: ");
+                                auxName = sc.nextLine();
+                                SubCollection subCollection = new SubCollection(auxName);
+                                if (col.getSubCollectionList().contains(subCollection)) {
+                                    System.out.println("Sub-Collection " + auxName + " already exists in " +
+                                            "Collection " + col + "!");
+                                    return; // If a sub-collection with the same name already exists, return to main menu
+                                }
+                                subCollection.setData(sc);
+                                col.addSubCollection(subCollection);
+                                System.out.println("Sub-collection " + auxName + " added successfully.");
+                                return;
+                            }
                         }
-                        break;
+                        return;
+                    case LIST:
+                        for (MainCollection col : collectionList) {
+                            System.out.println(col.listAll());
+                        }
+                        return;
                     case SEARCH:
-                        break;
+                        return;
                     case PRODUCTS:
-                        break;
+                        return;
                     case RETURN:
                         return;
                     default:
                         throw new IllegalArgumentException("No option match");
                 }
-                return; // If no exception was thrown, return to main menu
             } catch (IllegalArgumentException e) {
                 System.out.println("Please input valid option.");
             } finally {
+//                // Cleanup auxiliary variables
+//                auxCollection = null;
+//                auxName = null;
                 System.out.println(); // Add new line for better visibility
             }
         }
