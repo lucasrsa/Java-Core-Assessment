@@ -24,7 +24,7 @@ public class App {
         return "Product not found!";
     }
 
-    private static void searchProduct(Scanner sc) {
+    private static void saveProduct(Scanner sc) {
         System.out.print("Choose a collection to add product: ");
         String auxName = sc.nextLine();
         for (MainCollection col : collectionList) {
@@ -56,7 +56,6 @@ public class App {
 
     public static void productMenu(Scanner sc) {
 
-        String auxName;
         ProductOptions opt;
 
         while (true) {
@@ -65,7 +64,7 @@ public class App {
             try {
                 switch (opt) {
                     case SAVE:
-                        searchProduct(sc);
+                        saveProduct(sc);
                         return;
                     case LIST:
                         System.out.print("Products: ");
@@ -116,17 +115,7 @@ public class App {
                         auxName = sc.nextLine();
                         for (MainCollection col : collectionList) {
                             if (col.toString().equalsIgnoreCase(auxName)) {
-                                System.out.print("Sub-Collection name: ");
-                                auxName = sc.nextLine();
-                                SubCollection subCollection = new SubCollection(auxName);
-                                if (col.getSubCollectionList().contains(subCollection)) {
-                                    System.out.println("Sub-Collection " + auxName + " already exists in " +
-                                            "Collection " + col + "!");
-                                    return; // If a sub-collection with the same name already exists, return to main menu
-                                }
-                                subCollection.setData(sc);
-                                col.addSubCollection(subCollection);
-                                System.out.println("Sub-collection " + auxName + " added successfully.");
+                                col.addSubCollection(sc);
                                 return;
                             }
                         }

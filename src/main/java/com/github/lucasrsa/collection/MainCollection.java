@@ -11,8 +11,18 @@ public class MainCollection extends Collection {
 
     private final List<SubCollection> subCollectionList;
 
-    public void addSubCollection(SubCollection subCollection) {
+    public void addSubCollection(Scanner sc) {
+        System.out.print("Sub-Collection name: ");
+        String auxName = sc.nextLine();
+        SubCollection subCollection = new SubCollection(auxName);
+        if (this.subCollectionList.contains(subCollection)) {
+            System.out.println("Sub-Collection " + auxName + " already exists in " +
+                    "Collection " + this + "!");
+            return; // If a sub-collection with the same name already exists, return to main menu
+        }
+        subCollection.setData(sc);
         this.subCollectionList.add(subCollection);
+        System.out.println("Sub-collection " + auxName + " added successfully.");
     }
 
     public List<SubCollection> getSubCollectionList() {
