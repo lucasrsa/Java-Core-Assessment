@@ -8,23 +8,55 @@ import com.github.lucasrsa.options.ProductOptions;
 import com.github.lucasrsa.product.Product;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class App {
 
-    static private final List<Product> productList = new ArrayList<>();
     static private final List<MainCollection> collectionList = new ArrayList<>();
 
     private static String searchProduct(String name) {
-        for (Product product : productList) {
-            if (product.getName().equalsIgnoreCase(name)) {
+        for (MainCollection collection : collectionList) {
+            Product product = collection.getProduct(name);
+            if (product != null) {
                 return product.describe();
             }
         }
         return "Product not found!";
     }
 
+    private static void searchProduct(Scanner sc) {
+        System.out.print("Choose a collection to add product: ");
+        String auxName = sc.nextLine();
+        for (MainCollection col : collectionList) {
+            if (col.toString().equalsIgnoreCase(auxName)) {
+                System.out.print("Choose a sub-collection to add product: ");
+                auxName = sc.nextLine();
+                for (SubCollection subCol : col.getSubCollectionList()) {
+                    if (subCol.toString().equalsIgnoreCase(auxName)) {
+                        System.out.print("Product name: ");
+                        auxName = sc.nextLine();
+                        Product product = new Product(auxName);
+                        if (subCol.getProductList().contains(product)) {
+                            System.out.println("Product " + auxName + " already exists in " +
+                                    "Collection " + col + "/" + subCol + "!");
+                            return; // If a product with the same name already exists, return to main menu
+                        }
+                        product.setData(sc);
+                        subCol.addProduct(product);
+                        System.out.println("Product " + auxName + " added successfully.");
+                        return;
+                    }
+                }
+                System.out.println("Sub-Collection " + auxName + " not found!");
+                return;
+            }
+        }
+        System.out.println("Collection " + auxName + " not found!");
+    }
+
     public static void productMenu(Scanner sc) {
 
+        String auxName;
         ProductOptions opt;
 
         while (true) {
@@ -33,24 +65,15 @@ public class App {
             try {
                 switch (opt) {
                     case SAVE:
-                        System.out.print("Product name: ");
-                        final String name = sc.nextLine();
-                        Product product = new Product(name);
-                        if (productList.contains(product)) {
-                            System.out.println("Product " + name + " already exists!");
-                            return; // If a product with the same name already exists, return to main menu
-                        }
-                        product.setData(sc);
-                        productList.add(product);
-                        System.out.println("Product " + name + " added successfully.");
+                        searchProduct(sc);
                         return;
                     case LIST:
-                        System.out.println("Products: " + productList);
+                        System.out.print("Products: ");
+                        System.out.println(collectionList.stream().flatMap(collection -> collection.getProductList().stream()).collect(Collectors.toList()));
                         return;
                     case SEARCH:
                         System.out.print("Please insert product name: ");
-                        final String str = sc.nextLine();
-                        System.out.println(searchProduct(str));
+                        System.out.println(searchProduct(sc.nextLine()));
                         return;
                     case RETURN:
                         return;
@@ -126,9 +149,6 @@ public class App {
             } catch (IllegalArgumentException e) {
                 System.out.println("Please input valid option.");
             } finally {
-//                // Cleanup auxiliary variables
-//                auxCollection = null;
-//                auxName = null;
                 System.out.println(); // Add new line for better visibility
             }
         }

@@ -1,8 +1,11 @@
 package com.github.lucasrsa.collection;
 
+import com.github.lucasrsa.product.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class MainCollection extends Collection {
 
@@ -14,6 +17,10 @@ public class MainCollection extends Collection {
 
     public List<SubCollection> getSubCollectionList() {
         return this.subCollectionList;
+    }
+
+    public List<Product> getProductList() {
+        return this.subCollectionList.stream().flatMap(subCollection -> subCollection.getProductList().stream()).collect(Collectors.toList());
     }
 
     public void setData(Scanner sc) {
@@ -31,6 +38,16 @@ public class MainCollection extends Collection {
             str.append(aux);
         }
         return str.toString();
+    }
+
+    public Product getProduct(String str){
+        for (SubCollection subCollection : subCollectionList) {
+            Product product = subCollection.getProduct(str);
+            if (product != null) {
+                return product;
+            }
+        }
+        return null;
     }
 
     @Override

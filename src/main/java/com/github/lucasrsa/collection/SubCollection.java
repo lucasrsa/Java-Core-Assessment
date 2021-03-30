@@ -18,6 +18,15 @@ public class SubCollection extends Collection {
         return this.productList;
     }
 
+    public Product getProduct(String str){
+        for (Product product : productList) {
+            if (product.getName().equalsIgnoreCase(str)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
     public void setData(Scanner sc) {
         System.out.print("Sub-collection description: ");
         this.setDescription(sc.nextLine());
