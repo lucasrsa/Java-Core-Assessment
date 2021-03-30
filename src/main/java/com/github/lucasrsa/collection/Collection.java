@@ -20,14 +20,6 @@ public abstract class Collection extends Describable {
         }
     }
 
-    public String[] getKeywords() {
-        return this.keywords;
-    }
-
-    public void setKeywords(String[] keywords) {
-        this.keywords = keywords;
-    }
-
     public Collection(String name) {
         super(name);
     }

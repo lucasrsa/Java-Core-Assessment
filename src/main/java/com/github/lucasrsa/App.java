@@ -107,6 +107,7 @@ public class App {
                                 return;
                             }
                         }
+                        System.out.println("Collection " + auxName + " not found!");
                         return;
                     case LIST:
                         for (MainCollection col : collectionList) {

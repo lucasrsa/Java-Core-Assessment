@@ -17,15 +17,16 @@ public class AppTest {
 
     @Test
     public void main() {
-        String data = "";
-        data += "SAVE\nTest\n9.99\nDescription\n100\nCategory\n";
-        data += "SAVE\nTest\n";
-        data += "SAVE\nTest2\nInvalid price\n9.99\nDescription2\nInvalid quantity\n200\nCategory2\n";
-        data += "SEARCH\nTest\n";
-        data += "SEARCH\nTest3\n";
-        data += "Invalid option\n";
-        data += "LIST\n";
-        data += "EXIT\n";
+        String data = "INCORRECT\n" +
+                "PRODUCT\nINCORRECT\nRETURN\n" +
+                "COLLECTION\nINCORRECT\nRETURN\n" +
+                "COLLECTION\nNEW\nCollection1\nDescription\nKeyword1\n\n" +
+                "COLLECTION\nNEW\nCollection1\n" +
+                "COLLECTION\nSUB\nCollection1\nSub-Collection1\nDescription\nKeyword1\n\n" +
+                "COLLECTION\nSUB\nCollection1\nSub-Collection1\n" +
+                "COLLECTION\nSUB\nCollection2\n" +
+                "COLLECTION\nLIST\n" +
+                "EXIT\n";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         App.main(new String[]{});
     }
