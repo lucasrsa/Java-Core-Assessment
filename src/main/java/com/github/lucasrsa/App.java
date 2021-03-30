@@ -22,11 +22,11 @@ public class App {
         return "Product not found!";
     }
 
-    public static void productMenu(Scanner sc){
+    public static void productMenu(Scanner sc) {
 
         ProductOptions opt;
 
-        do {
+        while (true) {
             ProductOptions.describeOptions();
             opt = ProductOptions.valueOf(sc.nextLine().toUpperCase());
             try {
@@ -52,25 +52,24 @@ public class App {
                         System.out.println(searchProduct(str));
                         break;
                     case RETURN:
-                        break;
+                        return;
                     default:
                         throw new IllegalArgumentException("No option match");
                 }
-                opt = ProductOptions.RETURN; // If no exception was thrown, return to main menu
-            }catch (IllegalArgumentException e){
+                return; // If no exception was thrown, return to main menu
+            } catch (IllegalArgumentException e) {
                 System.out.println("Please input valid option.");
-                opt = ProductOptions.LIST; // Attribute random value to avoid returning to main menu
-            }finally {
+            } finally {
                 System.out.println(); // Add new line for better visibility
             }
-        } while (!opt.equals(ProductOptions.RETURN));
+        }
     }
 
-    public static void collectionMenu(Scanner sc){
+    public static void collectionMenu(Scanner sc) {
 
         CollectionOptions opt;
 
-        do {
+        while (true) {
             CollectionOptions.describeOptions();
             opt = CollectionOptions.valueOf(sc.nextLine().toUpperCase());
             try {
@@ -90,7 +89,7 @@ public class App {
                     case SUB:
                         break;
                     case LIST:
-                        for (MainCollection mainC:collectionList) {
+                        for (MainCollection mainC : collectionList) {
                             System.out.println(mainC);
                         }
                         break;
@@ -99,18 +98,17 @@ public class App {
                     case PRODUCTS:
                         break;
                     case RETURN:
-                        break;
+                        return;
                     default:
                         throw new IllegalArgumentException("No option match");
                 }
-                opt = CollectionOptions.RETURN; // If no exception was thrown, return to main menu
-            }catch (IllegalArgumentException e){
+                return; // If no exception was thrown, return to main menu
+            } catch (IllegalArgumentException e) {
                 System.out.println("Please input valid option.");
-                opt = CollectionOptions.LIST; // Attribute random value to avoid returning to main menu
-            }finally {
+            } finally {
                 System.out.println(); // Add new line for better visibility
             }
-        } while (!opt.equals(CollectionOptions.RETURN));
+        }
     }
 
     public static void main(String[] args) {
@@ -134,10 +132,10 @@ public class App {
                     default:
                         throw new IllegalArgumentException("No option match");
                 }
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println("Please input valid option.");
                 opt = MainOptions.PRODUCT; // Attribute random value to avoid exiting application
-            }finally {
+            } finally {
                 System.out.println(); // Add new line for better visibility
             }
         } while (!opt.equals(MainOptions.EXIT));
