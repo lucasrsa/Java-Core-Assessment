@@ -23,24 +23,25 @@ public class AppTest {
                 "COLLECTION\nNEW\nCollection1\n" +
                 "COLLECTION\nSUB\nCollection1\nSub-Collection1\nDescription\nKeyword1\n\n" +
                 "COLLECTION\nSUB\nCollection1\nSub-Collection1\n" +
-                "COLLECTION\nSUB\nCollection2\n" +
-                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct1\nPrice\n9.99\nDescription\nQuantity\n10\nImage1\n\n" +
-                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct2\nPrice\n19.99\nDescription\nQuantity\n20\nImage1\n\n" +
-                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct3\nPrice\n29.99\nDescription\nQuantity\n30\nImage1\n\n" +
+                "COLLECTION\nSUB\nWrongCollection\n" +
+                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct1\nPrice\n9.99\nDescription\nQuantity\n10\nImage1\n\nTSHIRT\n" +
+                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct2\nPrice\n19.99\nDescription\nQuantity\n20\nImage1\n\nSNEAKERS\n" +
+                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct3\nPrice\n29.99\nDescription\nQuantity\n30\nImage1\n\nPANTS\n" +
+                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct4\nPrice\n39.99\nDescription\nQuantity\n30\nImage1\n\nINCORRECT\n\n" +
                 "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct1\n" +
-                "PRODUCT\nSAVE\nCollection1\nSub-Collection2\n" +
-                "PRODUCT\nSAVE\nCollection2\n" +
+                "PRODUCT\nSAVE\nCollection1\nWrongSub-Collection\n" +
+                "PRODUCT\nSAVE\nWrongCollection\n" +
                 "PRODUCT\nLIST\n" +
                 "PRODUCT\nSEARCH\nProduct1\n" +
-                "PRODUCT\nSEARCH\nProduct2\n" +
+                "PRODUCT\nSEARCH\nWrongProduct\n" +
                 "PRODUCT\nINCORRECT\nRETURN\n" +
                 "COLLECTION\nSEARCH\nCollection1\nSub-Collection1\nProduct1\n" +
-                "COLLECTION\nSEARCH\nCollection1\nSub-Collection1\nProduct2\n" +
-                "COLLECTION\nSEARCH\nCollection1\nSub-Collection2\n" +
-                "COLLECTION\nSEARCH\nCollection2\n" +
+                "COLLECTION\nSEARCH\nCollection1\nSub-Collection1\nWrongProduct\n" +
+                "COLLECTION\nSEARCH\nCollection1\nWrongSub-Collection\n" +
+                "COLLECTION\nSEARCH\nWrongCollection\n" +
                 "COLLECTION\nPRODUCTS\nCollection1\n" +
                 "COLLECTION\nPRODUCTS\nSub-Collection1\n" +
-                "COLLECTION\nPRODUCTS\nCollection2\n" +
+                "COLLECTION\nPRODUCTS\nWrongCollection\n" +
                 "COLLECTION\nLIST\n" +
                 "COLLECTION\nINCORRECT\nRETURN\n" +
                 "EXIT\n";
