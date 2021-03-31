@@ -24,6 +24,18 @@ public class SubCollection extends Collection {
         System.out.println("Product " + auxName + " added successfully.");
     }
 
+    public void searchProduct(Scanner sc) {
+        System.out.print("Choose a product to search: ");
+        String auxName = sc.nextLine();
+        for (Product product : this.productList) {
+            if (product.toString().equalsIgnoreCase(auxName)) {
+                System.out.print(product.describe());
+                return;
+            }
+        }
+        System.out.println("Product " + auxName + " not found!");
+    }
+
     public List<Product> getProductList() {
         return this.productList;
     }

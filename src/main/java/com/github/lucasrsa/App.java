@@ -109,6 +109,15 @@ public class App {
                         }
                         return;
                     case SEARCH:
+                        System.out.print("Choose a collection to search a product: ");
+                        auxName = sc.nextLine();
+                        for (MainCollection col : collectionList) {
+                            if (col.toString().equalsIgnoreCase(auxName)) {
+                                col.searchProduct(sc);
+                                return;
+                            }
+                        }
+                        System.out.println("Collection " + auxName + " not found!");
                         return;
                     case PRODUCTS:
                         return;

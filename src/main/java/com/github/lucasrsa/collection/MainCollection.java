@@ -25,7 +25,19 @@ public class MainCollection extends Collection {
         System.out.println("Sub-collection " + auxName + " added successfully.");
     }
 
-    public void newProduct(Scanner sc){
+    public void searchProduct(Scanner sc) {
+        System.out.print("Choose a sub-collection to search a product: ");
+        String auxName = sc.nextLine();
+        for (SubCollection subCol : this.subCollectionList) {
+            if (subCol.toString().equalsIgnoreCase(auxName)) {
+                subCol.searchProduct(sc);
+                return;
+            }
+        }
+        System.out.println("Sub-Collection " + auxName + " not found!");
+    }
+
+    public void newProduct(Scanner sc) {
         System.out.print("Choose a sub-collection to add product: ");
         String auxName = sc.nextLine();
         for (SubCollection subCol : this.subCollectionList) {
@@ -58,7 +70,7 @@ public class MainCollection extends Collection {
         return str.toString();
     }
 
-    public Product getProduct(String str){
+    public Product getProduct(String str) {
         for (SubCollection subCollection : subCollectionList) {
             Product product = subCollection.getProduct(str);
             if (product != null) {
