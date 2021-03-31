@@ -41,8 +41,8 @@ public class App {
 
         while (true) {
             ProductOptions.describeOptions();
-            opt = ProductOptions.valueOf(sc.nextLine().toUpperCase());
             try {
+                opt = ProductOptions.valueOf(sc.nextLine().toUpperCase());
                 switch (opt) {
                     case SAVE:
                         saveProduct(sc);
@@ -76,8 +76,8 @@ public class App {
 
         while (true) {
             CollectionOptions.describeOptions();
-            opt = CollectionOptions.valueOf(sc.nextLine().toUpperCase());
             try {
+                opt = CollectionOptions.valueOf(sc.nextLine().toUpperCase());
                 switch (opt) {
                     case NEW:
                         System.out.print("Collection name: ");
