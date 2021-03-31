@@ -13,16 +13,6 @@ public class App {
 
     static private final List<MainCollection> collectionList = new ArrayList<>();
 
-    private static String searchProduct(String name) {
-        for (MainCollection collection : collectionList) {
-            Product product = collection.getProduct(name);
-            if (product != null) {
-                return product.describe();
-            }
-        }
-        return "Product not found!";
-    }
-
     private static void saveProduct(Scanner sc) {
         System.out.print("Choose a collection to add product: ");
         String auxName = sc.nextLine();
@@ -35,8 +25,17 @@ public class App {
         System.out.println("Collection " + auxName + " not found!");
     }
 
-    public static void productMenu(Scanner sc) {
+    private static String searchProduct(String name) {
+        for (MainCollection collection : collectionList) {
+            Product product = collection.getProduct(name);
+            if (product != null) {
+                return product.describe();
+            }
+        }
+        return "Product not found!";
+    }
 
+    private static void productMenu(Scanner sc) {
         while (true) {
             ProductOptions.describeOptions();
             try {
@@ -65,7 +64,7 @@ public class App {
         }
     }
 
-    public static void collectionMenu(Scanner sc) {
+    private static void collectionMenu(Scanner sc) {
 
         String auxName;
 
