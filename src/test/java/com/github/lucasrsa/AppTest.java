@@ -1,5 +1,6 @@
 package com.github.lucasrsa;
 
+import com.github.lucasrsa.options.MainOptions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +19,6 @@ public class AppTest {
     @Test
     public void main() {
         String data = "INCORRECT\n" +
-                "PRODUCT\nINCORRECT\nRETURN\n" +
-                "COLLECTION\nINCORRECT\nRETURN\n" +
                 "COLLECTION\nNEW\nCollection1\nDescription\nKeyword1\n\n" +
                 "COLLECTION\nNEW\nCollection1\n" +
                 "COLLECTION\nSUB\nCollection1\nSub-Collection1\nDescription\nKeyword1\n\n" +
@@ -32,6 +31,7 @@ public class AppTest {
                 "PRODUCT\nLIST\n" +
                 "PRODUCT\nSEARCH\nProduct1\n" +
                 "PRODUCT\nSEARCH\nProduct2\n" +
+                "PRODUCT\nINCORRECT\nRETURN\n" +
                 "COLLECTION\nSEARCH\nCollection1\nSub-Collection1\nProduct1\n" +
                 "COLLECTION\nSEARCH\nCollection1\nSub-Collection1\nProduct2\n" +
                 "COLLECTION\nSEARCH\nCollection1\nSub-Collection2\n" +
@@ -40,6 +40,7 @@ public class AppTest {
                 "COLLECTION\nPRODUCTS\nSub-Collection1\n" +
                 "COLLECTION\nPRODUCTS\nCollection2\n" +
                 "COLLECTION\nLIST\n" +
+                "COLLECTION\nINCORRECT\nRETURN\n" +
                 "EXIT\n";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         App.main(new String[]{});

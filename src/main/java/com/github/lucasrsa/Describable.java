@@ -18,19 +18,24 @@ public abstract class Describable {
     }
 
     @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
         String objName;
-        if (this.getClass() == o.getClass()){
+        if (this.getClass() == o.getClass()) {
             objName = ((Describable) o).getName();
-        }else {
+        } else {
             return false;
         }
         return this.name.equalsIgnoreCase(objName);
     }
 
-    public Describable(String name){
+    public Describable(String name) {
         this.name = name;
     }
 }
