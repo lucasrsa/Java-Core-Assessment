@@ -12,7 +12,7 @@ public class Product extends Describable {
     final private SubCollection collection;
     private double price = 0.0;
     private int quantity = 0;
-    private final List<Image> imageList;
+    private final Image[] imageList = new Image[5];
     private Variant variant;
 
     public void setPrice(double price) {
@@ -36,7 +36,8 @@ public class Product extends Describable {
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Please input a valid price.");
-                sc.nextLine(); // Remove invalid input
+            } finally {
+                sc.nextLine(); // Remove remaining possible characters from line
             }
         }
 
@@ -50,14 +51,25 @@ public class Product extends Describable {
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Please input a valid quantity.");
-                sc.nextLine(); // Remove invalid input
+            } finally {
+                sc.nextLine(); // Remove remaining possible characters from line
             }
         }
+
+        String str;
+        for (int i = 0; i < this.imageList.length; i++) {
+            System.out.printf("Add image URL %d/%d (Leave empty to continue): ", i+1, this.imageList.length);
+            str = sc.nextLine();
+            if (str.isEmpty()){
+                break;
+            }
+            this.imageList[i] = new Image(str);
+        }
+
     }
 
     public Product(String name, SubCollection collection) {
         super(name);
         this.collection = collection;
-        this.imageList = new ArrayList<>();
     }
 }
