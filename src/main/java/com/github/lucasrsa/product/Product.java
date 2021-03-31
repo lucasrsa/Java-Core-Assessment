@@ -2,10 +2,10 @@ package com.github.lucasrsa.product;
 
 import com.github.lucasrsa.Describable;
 import com.github.lucasrsa.collection.SubCollection;
+import com.github.lucasrsa.options.ProductOptions;
+import com.github.lucasrsa.options.VariantOptions;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Product extends Describable {
@@ -58,12 +58,29 @@ public class Product extends Describable {
 
         String str;
         for (int i = 0; i < this.imageList.length; i++) {
-            System.out.printf("Add image URL %d/%d (Leave empty to continue): ", i+1, this.imageList.length);
+            System.out.printf("Add image URL %d/%d (Leave empty to continue): ", i + 1, this.imageList.length);
             str = sc.nextLine();
-            if (str.isEmpty()){
+            if (str.isEmpty()) {
                 break;
             }
             this.imageList[i] = new Image(str);
+        }
+
+        while (true) {
+            VariantOptions.describeOptions();
+            str = sc.nextLine();
+            if (str.isEmpty()) {
+                break;
+            }
+            try {
+                this.variant = VariantOptions.valueOf(str.toUpperCase()).getVariant();
+                if (this.variant != null) {
+                    this.variant.setData(sc);
+                }
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Please input valid option.");
+            }
         }
 
     }
