@@ -32,6 +32,13 @@ public class AppTest {
                 "PRODUCT\nLIST\n" +
                 "PRODUCT\nSEARCH\nProduct1\n" +
                 "PRODUCT\nSEARCH\nProduct2\n" +
+                "COLLECTION\nSEARCH\nCollection1\nSub-Collection1\nProduct1\n" +
+                "COLLECTION\nSEARCH\nCollection1\nSub-Collection1\nProduct2\n" +
+                "COLLECTION\nSEARCH\nCollection1\nSub-Collection2\n" +
+                "COLLECTION\nSEARCH\nCollection2\n" +
+                "COLLECTION\nPRODUCTS\nCollection1\n" +
+                "COLLECTION\nPRODUCTS\nSub-Collection1\n" +
+                "COLLECTION\nPRODUCTS\nCollection2\n" +
                 "COLLECTION\nLIST\n" +
                 "EXIT\n";
         System.setIn(new ByteArrayInputStream(data.getBytes()));

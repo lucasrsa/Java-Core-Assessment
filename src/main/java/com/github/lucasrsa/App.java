@@ -1,7 +1,6 @@
 package com.github.lucasrsa;
 
 import com.github.lucasrsa.collection.MainCollection;
-import com.github.lucasrsa.collection.SubCollection;
 import com.github.lucasrsa.options.CollectionOptions;
 import com.github.lucasrsa.options.MainOptions;
 import com.github.lucasrsa.options.ProductOptions;
@@ -105,7 +104,7 @@ public class App {
                         return;
                     case LIST:
                         for (MainCollection col : collectionList) {
-                            System.out.println(col.listAll());
+                            System.out.println(col.listAllSubCollections());
                         }
                         return;
                     case SEARCH:
@@ -120,6 +119,19 @@ public class App {
                         System.out.println("Collection " + auxName + " not found!");
                         return;
                     case PRODUCTS:
+                        System.out.print("Choose a collection or sub-collection to list all products: ");
+                        auxName = sc.nextLine();
+                        for (MainCollection col : collectionList) {
+                            if (col.toString().equalsIgnoreCase(auxName)) {
+                                for (Product product : col.getProductList()) {
+                                    System.out.println(product.describe());
+                                }
+                                return;
+                            } else if (col.listProducts(auxName)){
+                                return;
+                            }
+                        }
+                        System.out.println("Collection or sub-collection " + auxName + " not found!");
                         return;
                     case RETURN:
                         return;

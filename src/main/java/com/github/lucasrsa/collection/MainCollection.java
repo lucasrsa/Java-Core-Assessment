@@ -25,6 +25,18 @@ public class MainCollection extends Collection {
         System.out.println("Sub-collection " + auxName + " added successfully.");
     }
 
+    public Boolean listProducts(String name) {
+        for (SubCollection subCol : this.subCollectionList) {
+            if (subCol.toString().equalsIgnoreCase(name)) {
+                for (Product product : subCol.getProductList()) {
+                    System.out.println(product.describe());
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void searchProduct(Scanner sc) {
         System.out.print("Choose a sub-collection to search a product: ");
         String auxName = sc.nextLine();
@@ -60,7 +72,7 @@ public class MainCollection extends Collection {
         this.setKeywords(sc);
     }
 
-    public String listAll() {
+    public String listAllSubCollections() {
         String aux;
         StringBuilder str = new StringBuilder("Collection " + this.name + ":");
         for (SubCollection sub : subCollectionList) {
