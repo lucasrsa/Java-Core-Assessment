@@ -37,13 +37,10 @@ public class App {
 
     public static void productMenu(Scanner sc) {
 
-        ProductOptions opt;
-
         while (true) {
             ProductOptions.describeOptions();
             try {
-                opt = ProductOptions.valueOf(sc.nextLine().toUpperCase());
-                switch (opt) {
+                switch (ProductOptions.valueOf(sc.nextLine().toUpperCase())) {
                     case SAVE:
                         saveProduct(sc);
                         return;
@@ -70,19 +67,16 @@ public class App {
 
     public static void collectionMenu(Scanner sc) {
 
-        CollectionOptions opt;
-        MainCollection auxCollection;
         String auxName;
 
         while (true) {
             CollectionOptions.describeOptions();
             try {
-                opt = CollectionOptions.valueOf(sc.nextLine().toUpperCase());
-                switch (opt) {
+                switch (CollectionOptions.valueOf(sc.nextLine().toUpperCase())) {
                     case NEW:
                         System.out.print("Collection name: ");
                         auxName = sc.nextLine();
-                        auxCollection = new MainCollection(auxName);
+                        MainCollection auxCollection = new MainCollection(auxName);
                         if (collectionList.contains(auxCollection)) {
                             System.out.println("Collection " + auxName + " already exists!");
                             return; // If a collection with the same name already exists, return to main menu
@@ -147,14 +141,13 @@ public class App {
     }
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in).useLocale(Locale.getDefault());
-        MainOptions opt;
 
         while (true) {
             MainOptions.describeOptions();
             try {
-                opt = MainOptions.valueOf(sc.nextLine().toUpperCase());
-                switch (opt) {
+                switch (MainOptions.valueOf(sc.nextLine().toUpperCase())) {
                     case PRODUCT:
                         productMenu(sc);
                         break;
