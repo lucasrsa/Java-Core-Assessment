@@ -1,5 +1,6 @@
 package com.github.lucasrsa.collection;
 
+import com.github.lucasrsa.options.MainOptions;
 import com.github.lucasrsa.product.Product;
 
 import java.util.ArrayList;
@@ -8,12 +9,13 @@ import java.util.Scanner;
 
 public class SubCollection extends Collection {
 
+    private final MainCollection collection;
     private final List<Product> productList;
 
     public void newProduct(Scanner sc) {
         System.out.print("Product name: ");
         String auxName = sc.nextLine();
-        Product product = new Product(auxName);
+        Product product = new Product(auxName, this);
         if (this.productList.contains(product)) {
             System.out.println("Product " + auxName + " already exists in " +
                     "Collection " + this + "/" + this + "!");
@@ -61,9 +63,10 @@ public class SubCollection extends Collection {
         return this.name;
     }
 
-    public SubCollection(String name) {
+    public SubCollection(String name, MainCollection collection) {
         super(name);
 
+        this.collection = collection;
         this.productList = new ArrayList<>();
     }
 }

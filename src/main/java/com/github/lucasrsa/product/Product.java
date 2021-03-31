@@ -1,11 +1,13 @@
 package com.github.lucasrsa.product;
 
 import com.github.lucasrsa.Describable;
+import com.github.lucasrsa.collection.SubCollection;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Product extends Describable {
+    final private SubCollection collection;
     private double price = 0.0;
     private int quantity = 0;
 
@@ -49,7 +51,8 @@ public class Product extends Describable {
         }
     }
 
-    public Product(String name) {
+    public Product(String name, SubCollection collection) {
         super(name);
+        this.collection = collection;
     }
 }

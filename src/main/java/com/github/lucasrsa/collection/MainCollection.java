@@ -14,7 +14,7 @@ public class MainCollection extends Collection {
     public void addSubCollection(Scanner sc) {
         System.out.print("Sub-Collection name: ");
         String auxName = sc.nextLine();
-        SubCollection subCollection = new SubCollection(auxName);
+        SubCollection subCollection = new SubCollection(auxName, this);
         if (this.subCollectionList.contains(subCollection)) {
             System.out.println("Sub-Collection " + auxName + " already exists in " +
                     "Collection " + this + "!");
