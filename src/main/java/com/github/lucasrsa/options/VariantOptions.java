@@ -1,19 +1,19 @@
 package com.github.lucasrsa.options;
 
 import com.github.lucasrsa.product.Pants;
-import com.github.lucasrsa.product.Sneakers;
+import com.github.lucasrsa.product.Footwear;
 import com.github.lucasrsa.product.TShirt;
 import com.github.lucasrsa.product.Variant;
 
 public enum VariantOptions {
-    TSHIRT, SNEAKERS, PANTS;
+    TSHIRT, FOOTWEAR, PANTS;
 
     public Variant getVariant(){
         switch (this){
             case TSHIRT:
                 return new TShirt();
-            case SNEAKERS:
-                return new Sneakers();
+            case FOOTWEAR:
+                return new Footwear();
             case PANTS:
                 return new Pants();
             default:

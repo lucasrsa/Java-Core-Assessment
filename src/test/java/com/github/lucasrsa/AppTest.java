@@ -25,7 +25,7 @@ public class AppTest {
                 "COLLECTION\nSUB\nCollection1\nSub-Collection1\n" +
                 "COLLECTION\nSUB\nWrongCollection\n" +
                 "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct1\nPrice\n9.99\nDescription\nQuantity\n10\nImage1\n\nTSHIRT\nColor1\nGender1\nWrongSize\nXXXL\nWrongSleeve\nLONG\n" +
-                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct2\nPrice\n19.99\nDescription\nQuantity\n20\nImage1\n\nSNEAKERS\nColor1\nGender1\nActivity1\n" +
+                "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct2\nPrice\n19.99\nDescription\nQuantity\n20\nImage1\n\nFOOTWEAR\nColor1\nGender1\nActivity1\nWrongSize\n100\n99\n" +
                 "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct3\nPrice\n29.99\nDescription\nQuantity\n30\nImage1\n\nPANTS\nColor1\nGender1\nActivity1\n" +
                 "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct4\nPrice\n39.99\nDescription\nQuantity\n30\nImage1\n\nINCORRECT\n\n" +
                 "PRODUCT\nSAVE\nCollection1\nSub-Collection1\nProduct1\n" +
